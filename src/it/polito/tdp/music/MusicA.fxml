@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.music.MusicController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.music.MusicController">
    <top>
       <Label text="MusicMicro (Turno A)" BorderPane.alignment="CENTER" />
    </top>
@@ -17,8 +20,8 @@
                <children>
                   <Label text="Mese" />
                   <ComboBox fx:id="boxMese" prefWidth="150.0" />
-                  <Button fx:id="btnArtisti" mnemonicParsing="false" text="Elenco artisti" />
-                  <Button fx:id="btnNazioni" mnemonicParsing="false" text="Distanza max naxioni" />
+                  <Button fx:id="btnArtisti" mnemonicParsing="false" onAction="#doElenco" text="Elenco artisti" />
+                  <Button fx:id="btnNazioni" mnemonicParsing="false" onAction="#doDistanza" text="Distanza max nazioni" />
                </children>
             </HBox>
             <TextArea fx:id="txtResult" />

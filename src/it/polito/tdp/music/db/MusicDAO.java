@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -154,6 +155,50 @@ public class MusicDAO {
 	}
 
 
+	public List<Integer> getValidMonths() {
+		
+		List<Integer> months = new ArrayList<>() ;
+		
+		String sql = "select distinct month from listening order by month" ;
+		
+		try {
+			Connection conn = DBConnect.getConnection() ;
+
+			PreparedStatement st = conn.prepareStatement(sql) ;
+			
+			ResultSet rs = st.executeQuery() ;
+			
+			while(rs.next()) {
+				months.add( rs.getInt("month") ) ;
+			}
+			
+			st.close(); 
+			conn.close(); 
+			
+			return months ;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null ;
+	}
+	
+	public List getTopArtists() {
+		
+		//TODO complete method
+		String sql = "select count(listening.id) as cnt , artistid, artist.artist " + 
+				"from listening, artist " + 
+				"where month=4 " + 
+				"and listening.artistid = artist.id " + 
+				"group by artistid " + 
+				"order by cnt desc " + 
+				"limit 0, 20" ;
+		return null ;
+	}
+	
+	
+	
 	
 	
 	public static void main(String[] args) {
@@ -176,5 +221,7 @@ public class MusicDAO {
 		System.out.format("Loaded %d countries, %d cities, %d artists, %d tracks, %d listenings\n", 
 				countries.size(), cities.size(), artists.size(), tracks.size(), listenings.size()) ;
 	}
+	
+
 
 }
