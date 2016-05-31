@@ -2,8 +2,10 @@ package it.polito.tdp.music;
 
 import java.net.URL;
 import java.time.Month;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.music.model.ArtistFrequency;
 import it.polito.tdp.music.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,12 +37,41 @@ public class MusicController {
 
     @FXML
     void doDistanza(ActionEvent event) {
+    	
+    	Month m = boxMese.getValue() ;
+    	if(m==null) {
+    		txtResult.appendText("Devi selezionare un mese\n");
+    		return ;
+    	}
 
+    	model.getTopCountries(m) ;
+    	model.creaGrafo(m);
+    	
+    	int max = model.maxDistanzaCountry() ;
+    	
+    	txtResult.appendText(String.format("Massima distanza: %d\n", max));
+    
     }
 
     @FXML
     void doElenco(ActionEvent event) {
-    	boxMese.getValue() ;
+    	Month m = boxMese.getValue() ;
+    	if(m==null) {
+    		txtResult.appendText("Devi selezionare un mese\n");
+    		return ;
+    	}
+    	
+    	List<ArtistFrequency> list = model.getTopArtists(m) ;
+    	
+    	if(list==null) {
+    		txtResult.appendText("Errore nel database\n");
+    		return ;
+    	}
+    	
+    	for(ArtistFrequency f : list) {
+    		txtResult.appendText(String.format("%-30s %4d\n",
+    				f.getArtist(), f.getFreqency()));
+    	}
     }
     
     public void setModel(Model model) {

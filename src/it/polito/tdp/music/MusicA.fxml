@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.music.MusicController">
    <top>
@@ -24,7 +25,10 @@
                   <Button fx:id="btnNazioni" mnemonicParsing="false" onAction="#doDistanza" text="Distanza max nazioni" />
                </children>
             </HBox>
-            <TextArea fx:id="txtResult" />
+            <TextArea fx:id="txtResult">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font></TextArea>
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
