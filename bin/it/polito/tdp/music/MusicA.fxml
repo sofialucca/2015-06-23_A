@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.music.MusicController">
+   <top>
+      <Label text="MusicMicro (Turno A)" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox spacing="5.0">
+               <children>
+                  <Label text="Mese" />
+                  <ComboBox fx:id="boxMese" prefWidth="150.0" />
+                  <Button fx:id="btnArtisti" mnemonicParsing="false" text="Elenco artisti" />
+                  <Button fx:id="btnNazioni" mnemonicParsing="false" text="Distanza max naxioni" />
+               </children>
+            </HBox>
+            <TextArea fx:id="txtResult" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>
